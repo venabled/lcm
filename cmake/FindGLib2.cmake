@@ -38,6 +38,10 @@ endfunction()
 
 #------------------------------------------------------------------------------
 function(_glib2_add_target TARGET LIBRARY)
+
+  find_library(ICONVLIB NAMES iconv)
+  find_library(INTLLIB NAMES intl)
+
   set(GLIB2_${TARGET}_FIND_QUIETLY TRUE)
   set(_deps GLIB2_${LIBRARY}_LIBRARY)
   foreach(_include ${ARGN})
@@ -54,9 +58,12 @@ function(_glib2_add_target TARGET LIBRARY)
 
     set(_target GLib2::${TARGET})
     add_library(${_target} UNKNOWN IMPORTED)
+    target_link_libraries(${_target} INTERFACE ${ICONVLIB} ${INTLLIB})
     set_property(TARGET ${_target} APPEND PROPERTY
       IMPORTED_LOCATION ${GLIB2_${LIBRARY}_LIBRARY}
     )
+
+
     foreach(_include ${ARGN})
       set_property(TARGET ${_target} APPEND PROPERTY
         INTERFACE_INCLUDE_DIRECTORIES ${GLIB2_${_include}_INCLUDE_DIR}
