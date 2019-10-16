@@ -40,7 +40,7 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 add_library(lcm-coretypes INTERFACE)
 add_library(lcm-static STATIC ${lcm_sources})
-add_library(lcm SHARED ${lcm_sources})
+add_library(lcm ${lcm_sources})
 
 foreach(lcm_lib lcm lcm-static)
   target_compile_definitions(${lcm_lib} PRIVATE
