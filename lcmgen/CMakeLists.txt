@@ -43,7 +43,7 @@ if(_uses_sanitizers AND NOT LCM_SANITIZE_LCMGEN)
 endif()
 
 add_executable(lcm-gen ${lcm-gen_sources})
-target_link_libraries(lcm-gen PRIVATE GLib2::glib)
+target_link_libraries(lcm-gen PRIVATE PkgConfig::GLib2 PkgConfig::gio PkgConfig::gmodule PkgConfig::gobject PkgConfig::gthread PkgConfig::libffi z)
 
 install(TARGETS lcm-gen
   EXPORT lcmTargets

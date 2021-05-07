@@ -7,7 +7,21 @@ if(CMAKE_VERSION VERSION_LESS 3.7)
   list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/3.7")
 endif()
 
-find_package(GLib2 REQUIRED)
+# find_package(GLib2 REQUIRED)
+
+find_package(PkgConfig REQUIRED)
+pkg_search_module(GLib2 REQUIRED IMPORTED_TARGET GLOBAL glib-2.0)
+pkg_search_module(gio REQUIRED IMPORTED_TARGET GLOBAL gio-2.0)
+pkg_search_module(gmodule REQUIRED IMPORTED_TARGET GLOBAL gmodule-2.0)
+pkg_search_module(gobject REQUIRED IMPORTED_TARGET GLOBAL gobject-2.0)
+pkg_search_module(gthread REQUIRED IMPORTED_TARGET GLOBAL gthread-2.0)
+pkg_search_module(libffi REQUIRED IMPORTED_TARGET GLOBAL libffi)
+
+
+message("HERE SHE IS: ${GLib2_LIBRARY_DIRS}")
+link_directories(${GLib2_LIBRARY_DIRS})
+message("gobject FLAGS: ${gobject_LINK_LIBRARIES}")
+
 
 # Configuration and utility functions
 include(lcm-cmake/config.cmake NO_POLICY_SCOPE)
@@ -33,7 +47,7 @@ add_subdirectory(lcm)
 add_subdirectory(lcmgen)
 add_subdirectory(lcm-logger)
 
-option(LCM_ENABLE_EXAMPLES "Build test and example programs" ON)
+option(LCM_ENABLE_EXAMPLES "Build  and example programs" ON)
 if(LCM_ENABLE_EXAMPLES)
   add_subdirectory(liblcm-test)
 endif()

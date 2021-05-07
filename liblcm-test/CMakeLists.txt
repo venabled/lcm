@@ -5,7 +5,7 @@ add_executable(lcm-source lcm-source.c)
 target_link_libraries(lcm-source lcm ${lcm-winport})
 
 add_executable(lcm-tester lcm-tester.c)
-target_link_libraries(lcm-tester lcm GLib2::glib)
+target_link_libraries(lcm-tester lcm PkgConfig::GLib2 PkgConfig::gio PkgConfig::gmodule PkgConfig::gobject PkgConfig::gthread PkgConfig::libffi z)
 
 add_executable(lcm-example lcm-example.c)
 target_link_libraries(lcm-example lcm)
@@ -14,13 +14,13 @@ if(WIN32)
 endif()
 
 add_executable(lcm-logfilter lcm-logfilter.c)
-target_link_libraries(lcm-logfilter lcm ${lcm-winport} GLib2::glib)
+target_link_libraries(lcm-logfilter lcm ${lcm-winport} PkgConfig::GLib2 PkgConfig::gio PkgConfig::gmodule PkgConfig::gobject PkgConfig::gthread PkgConfig::libffi z)
 
 add_executable(lcm-buftest-receiver buftest-receiver.c)
-target_link_libraries(lcm-buftest-receiver lcm GLib2::glib)
+target_link_libraries(lcm-buftest-receiver lcm PkgConfig::GLib2 PkgConfig::gio PkgConfig::gmodule PkgConfig::gobject PkgConfig::gthread PkgConfig::libffi z)
 
 add_executable(lcm-buftest-sender buftest-sender.c)
-target_link_libraries(lcm-buftest-sender lcm GLib2::glib)
+target_link_libraries(lcm-buftest-sender lcm PkgConfig::GLib2 PkgConfig::gio PkgConfig::gmodule PkgConfig::gobject PkgConfig::gthread PkgConfig::libffi z)
 
 install(TARGETS
   lcm-sink

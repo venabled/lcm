@@ -39,7 +39,7 @@ endfunction()
 #------------------------------------------------------------------------------
 function(_glib2_add_target TARGET LIBRARY)
 
-  find_library(ICONVLIB NAMES iconv)
+  # find_library(ICONVLIB NAMES iconv)
   find_library(INTLLIB NAMES intl)
 
   set(GLIB2_${TARGET}_FIND_QUIETLY TRUE)

@@ -2,6 +2,7 @@ if(UNIX)
   find_package(Threads)
 endif()
 
+
 set(lcm_sources
   eventlog.c
   lcm.c
@@ -61,7 +62,8 @@ foreach(lcm_lib lcm lcm-static)
   )
 
   target_link_libraries(${lcm_lib} PRIVATE
-    GLib2::glib
+    # GLib2::glib
+    PkgConfig::GLib2 PkgConfig::gio PkgConfig::gmodule PkgConfig::gobject PkgConfig::gthread PkgConfig::libffi z 
     ${CMAKE_THREAD_LIBS_INIT}
   )
 endforeach()

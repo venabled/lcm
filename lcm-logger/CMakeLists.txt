@@ -2,14 +2,14 @@ add_executable(lcm-logger lcm_logger.c glib_util.c)
 target_link_libraries(lcm-logger
   lcm
   ${lcm-winport}
-  GLib2::glib
+  PkgConfig::GLib2 PkgConfig::gio PkgConfig::gmodule PkgConfig::gobject PkgConfig::gthread PkgConfig::libffi z
 )
 
 add_executable(lcm-logplayer lcm_logplayer.c)
 target_link_libraries(lcm-logplayer
   lcm
   ${lcm-winport}
-  GLib2::glib
+  PkgConfig::GLib2 PkgConfig::gio PkgConfig::gmodule PkgConfig::gobject PkgConfig::gthread PkgConfig::libffi z
 )
 
 install(TARGETS
