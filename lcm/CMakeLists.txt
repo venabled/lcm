@@ -63,7 +63,7 @@ foreach(lcm_lib lcm lcm-static)
 
   target_link_libraries(${lcm_lib} PRIVATE
     # GLib2::glib
-    PkgConfig::GLib2 PkgConfig::gio PkgConfig::gmodule PkgConfig::gobject PkgConfig::gthread PkgConfig::libffi z 
+    PkgConfig::GLib2  
     ${CMAKE_THREAD_LIBS_INIT}
   )
 endforeach()

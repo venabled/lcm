@@ -17,6 +17,7 @@ pkg_search_module(gobject REQUIRED IMPORTED_TARGET GLOBAL gobject-2.0)
 pkg_search_module(gthread REQUIRED IMPORTED_TARGET GLOBAL gthread-2.0)
 pkg_search_module(libffi REQUIRED IMPORTED_TARGET GLOBAL libffi)
 
+message("ROOT! ${ANDROID_TOOLCHAIN_ROOT}/sysroot/usr/lib/${CMAKE_LIBRARY_ARCHITECTURE}/${ANDROID_NATIVE_API_LEVEL}")
 
 message("HERE SHE IS: ${GLib2_LIBRARY_DIRS}")
 link_directories(${GLib2_LIBRARY_DIRS})
